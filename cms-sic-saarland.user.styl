@@ -1,8 +1,8 @@
 /*==UserStyle==
 @name Themed CMS
 @version 1.0.0
-@description Own modification of Colin Barndt's SIC Cms Theme
-@namespace github.com/david-prv/stylus_cms-sic-saarland-theme
+@description Adds themes to the CMS pages
+@namespace github.com/ColinTimBarndt/cms-sic-saarland
 @author CoBa, david-prv
 @preprocessor stylus
 @homepageURL https://github.com/ColinTimBarndt/stylus_cms-sic-saarland-theme
@@ -370,6 +370,9 @@ else if owl-style-name == "rgb"
     .message
         color: $primary
         shadow-under-text()
+    .label
+        background: $primary-low
+        vertical-align: middle
     .bar-success,
     .label-success
         color: $success-low !important
@@ -381,10 +384,8 @@ else if owl-style-name == "rgb"
         background: $warning !important
     .bar-important,
     .label-important,
-    .btn-important,
     .bar-danger,
-    .label-danger,
-    .btn-danger
+    .label-danger
         color: $danger-low !important
         background: $danger !important
     .message
@@ -410,17 +411,17 @@ else if owl-style-name == "rgb"
             border-top-color: $btn-text
             border-bottom-color: $btn-text
         &:hover, &:focus
-            background: $btn-hover
-    .btn
+            background: $btn-hover !important
+    .btn, select:not([multiple])
         declare-btn-style($primary, $primary-low, $primary-medium)
         border-radius: 0 !important
         box-shadow: none !important
         text-shadow: none
-        border: 1px solid transparent
-        font-size: $font-0 !important
+        border: none
+        font-size: 15px !important
         line-height: normal !important
         box-sizing: border-box !important
-        padding: .5em .65em !important
+        padding: calc(.5em + 1px) calc(.65em + 1px) !important
         display: inline-flex !important
         align-items: center !important
         justify-content: center !important
@@ -428,6 +429,8 @@ else if owl-style-name == "rgb"
         font-weight: normal !important
         cursor: pointer !important
         transition: all 0.25s !important
+        height: 35px
+        min-width: 35px
         >.caret
             border-top-color: $primary
             border-bottom-color: $primary
@@ -439,24 +442,31 @@ else if owl-style-name == "rgb"
                 border-bottom-color: $secondary
     .btn-group
         font-size: inherit
+        display: flex
+        .btn:not(:first-child)
+            margin-left: 4px !important
     .btn-group.open .btn.dropdown-toggle
         background: $primary-medium
         &.btn-success
             background: $success-low
     .btn-small
         font-size: $font-down-2 !important
+        height: auto
+        min-width: auto
     .btn-success
         declare-btn-style($success, $success-low, $success-hover)
-    a>i
+    .btn-danger, .btn-important
+        declare-btn-style($danger, $danger-low, $danger-hover)
+    a>i, .btn>i
         icon-mono()
-    a.btn:hover>i,
-    a.btn:focus>i
+    .btn:hover>i,
+    .btn:focus>i
         icon-mono-hover()
     .round-button
         color: $primary
         border-color: $primary
         background: transparent
-@-moz-document regexp("https://cms\\.sic\\.saarland/[\\w-]+/(?!forum).*")
+@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/(?!forum).*")
     /* NAV */
     .navbar, .user-login
         background: $secondary !important
@@ -480,7 +490,7 @@ else if owl-style-name == "rgb"
         color: $primary
         box-shadow: none !important
         min-height: unset
-        max-width: 1110px
+        max-width: 1100px
         margin: 0 auto
     .navbar
         .brand, button
@@ -561,10 +571,13 @@ else if owl-style-name == "rgb"
         align-items: baseline
         gap: 0 20px
         margin: 0
-    .page-header .site-title>strong
-        line-height: unset !important
-    .page-header .site-title a
-        color: $tertiary
+    .page-header .site-title
+        >strong
+            line-height: unset !important
+        >small
+            color: $primary-medium
+        a
+            color: $tertiary
     /* CONTENT */
     @media (min-width: 1200px)
         .container
@@ -594,7 +607,7 @@ else if owl-style-name == "rgb"
         flex-shrink: 0
     #scrollspy-container
         position: fixed
-        top: 40% !important
+        top: 50% !important
         transform: translateY(-50%)
         max-width: 220px
     #scrollspy
@@ -629,12 +642,12 @@ else if owl-style-name == "rgb"
         border: none !important
     .accordion-body.collapse.in
         overflow: hidden
-    tbody>tr
+    table:not([class^="fc"])>tbody>tr
         border-bottom: 1px solid $primary-low
-    tbody>tr>td,
-    tbody>tr>th
+        td, th
+            border: none !important
+    td, th
         background-color: transparent !important
-        border: none !important
     .table-bordered
         border: 1px solid $primary-low
     td.name-cell>img
@@ -644,8 +657,6 @@ else if owl-style-name == "rgb"
         color: $primary-low-mid
     .thumbnail
         border-color: $primary
-    
-    /* Workarounds */
     .pagination ul>li>a, .pagination ul>li>span, .pagination ul>li>a,
     .pagination ul>li>span, .pagination ul>li>a:hover, .pagination ul>li>a:focus, .pagination ul>.active>a, .pagination ul>.active>span
         background: transparent
@@ -674,7 +685,7 @@ else if owl-style-name == "rgb"
     hr
         border-top: 1px solid $primary-low
         border-bottom: 1px solid $primary-low
-@-moz-document regexp("https://cms\\.sic\\.saarland/[\\w-]+/[^/]+/kNobelpreis")
+@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/[^/]+/kNobelpreis")
     #knobelranking
         background: $secondary
         border: 1px solid $secondary-low
@@ -685,7 +696,7 @@ else if owl-style-name == "rgb"
             background: $primary-low
         .achieved
             background: $tertiary
-@-moz-document regexp("https://cms\\.sic\\.saarland/[\\w-]+/termine/calendar/index")
+@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/termine/calendar/index")
     .Calendar
         .fc-header tr
             border-bottom: none
@@ -706,7 +717,7 @@ else if owl-style-name == "rgb"
             color: $primary !important
             background: $primary-low
             transition: all 0.25s !important
-            height: unset
+            height: 35px
             &:not(.fc-corner-left)
                 border-left: 1px solid $secondary-medium
             &:hover, &:focus
@@ -717,12 +728,23 @@ else if owl-style-name == "rgb"
         .fc-button-prev, .fc-button-next
             height: 35px
         .fc-day-header
-            border: none !important
             background: $secondary-high
             border-right: 1px solid $secondary !important
             border-bottom: 4px solid $secondary !important
+        .fc-widget-header
+            background: $secondary-high !important
+            border-color: $secondary
+            &:last-child, &:first-child
+                background: none !important
+        .fc-widget-content
+            border-color: $primary-low
+        .fc-widget-header .fc-agenda-divider-inner
+            background: $primary-low
+        .fc-agenda-slots td
+            border-color: $primary-low !important
         .fc-event
             border-color: transparent !important
+            outline: 1px solid $secondary
             shadow-under-text()
             &.Blue
                 color: $tertiary-low !important
@@ -736,10 +758,14 @@ else if owl-style-name == "rgb"
             &.Red
                 color: $danger-low !important
                 background: $danger
-@-moz-document regexp("https://cms\\.sic\\.saarland/[\\w-]+/forum/.*")
+        .fc-event-bg
+            display: none
+@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/forum/.*")
     body
         padding: 0 !important
         margin: 0 !important
+    input, button, select, textarea
+        font-family: $font-family
     /* NAV */
     .navbar-fixed-top
         order: 0
@@ -844,24 +870,33 @@ else if owl-style-name == "rgb"
         margin: 0
         align-self: stretch
         height: 30px
-        input
-            box-shadow: none
-            text-shadow: none
-            color: inherit
-            border-radius: 0
-            border: 0
-            height: 18px
-            padding: 6px 12px
-            background: $secondary-very-high
-            &:focus
-                background: $secondary-high
+    .navbar #keywords
+        box-shadow: none
+        text-shadow: none
+        color: inherit
+        border-radius: 0
+        border: 0
+        height: 18px
+        padding: 6px 12px
+        background: $secondary-very-high
+        transition: background 0.15s
+        &:focus
+            background: $secondary-high
     /* HEADER */
+    #page-header
+        display: flex
+        flex-direction: column
+        align-items: center
     .headerbar
+        position: sticky
+        top: 0
+        align-self: stretch
+        z-index: 100
         display: flex
         flex-direction: column
         background-color: $header_background
         box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25)
-        margin: 0 0 30px
+        margin: 0 0 10px
         padding: 0
         border: none
         >.row-fluid
@@ -869,49 +904,219 @@ else if owl-style-name == "rgb"
             margin: 0
             padding: 10px
             align-items: center
+            width: auto
             @media (min-width: 1200px)
                 padding: unquote("10px max(10px, calc(50vw - 1110px/2))")
-        #site-description
-            display: grid
-            grid-template-columns: 60px auto
-            grid-template-rows: auto
-            grid-template-areas: "logo title" "logo subtitle"
-            gap: 0 20px
+    #site-description
+        display: grid
+        grid-template-columns: 60px auto
+        grid-template-rows: auto
+        grid-template-areas: "logo title" "logo subtitle"
+        gap: 0 20px
+        margin: 0
+        width: 100%
+        >h1
+            display: inline
+            padding: 0 !important
+            grid-area: title
+            >a
+                line-height: 1 !important
+                font-size: 38.5px
+        >p:first-of-type
+            grid-area: subtitle
+            font-size: 24.5px
             margin: 0
-            width: 100%
-            >h1
-                display: inline
-                padding: 0 !important
-                grid-area: title
-                >a
-                    line-height: unset !important
-                    font-size: 38.5px
-            >p
-                grid-area: subtitle
-                font-size: 24.5px
-                margin: 0
-        #logo
-            grid-area: logo
-            align-self: center
-            float: none
-            margin: 0
-            padding: 0
-            owl-style()
-            /* Higher quality image */
-            background: url('/system/theme/Sic/img/logo.png')
-            background-size: cover
-            >img
-                width: auto
-                max-width: unset
-                max-height: 60px
-                opacity: 0
+            margin-top: 0.5em
+            color: $primary-medium
+        .skiplink>a
+            z-index: 2000
+            position: fixed
+            top: 0
+            left: 0
+            width: 100vw
+            height: 1em
+            outline: none
+            background: $quaternary
+            color: $quaternary-low
+            text-align: center
+            padding: 4px 0
+            line-height: 1
+            font-size: 30px
+            transform: translateY(-100%)
+            transition: transform 0.2s ease
+            &:focus
+                transform: translateY(0%)
+    #logo
+        grid-area: logo
+        align-self: center
+        float: none
+        margin: 0
+        padding: 0
+        owl-style()
+        /* Higher quality image */
+        background: url('/system/theme/Sic/img/logo.png')
+        background-size: cover
+        >img
+            width: auto
+            max-width: unset
+            max-height: 60px
+            opacity: 0
+    /* BREADCRUMBS */
+    .breadcrumb
+        background: none
+        border: none
+        box-shadow: none
+        text-shadow: none
+        >li
+            display: flex
+            gap: 5px
+            align-items: center
+            a
+                z-index: 1
+                shadow-under-text()
+            strong
+                $size = 0.5
+                z-index: 0
+                display: inline-block
+                color: transparent
+                text-shadow: none
+                width: $size em
+                height: $size em
+                margin-left: -(($size**0.5)/2)em
+                border-top: 2px solid $primary
+                border-right: 2px solid $primary
+                transform: rotate(45deg)
+                user-select: none
     /* CONTENT */
     body > .container-fluid
         padding: 0
+    #page-body
+        margin: 0
+        max-width: 1110px
+        width: 100%
+        .row-fluid
+            width: auto !important
+    #page-header>.row-fluid
+        max-width: 1110px !important
+        margin-left: auto
+        margin-right: auto
+        @media (max-width: 1110px)
+            max-width: calc(100% - 22px) !important
     a:hover
         text-decoration: underline
-    .icon-white
-        background-image: url('styles/proboot/theme/images/glyphicons-halflings.png')
+    th, td
+        border-radius: 0 !important
+    .box
+        border: 1px solid $primary-low
+    .table th
+        text-transform: none
+    .table-bordered
+        border: none
+        td
+            border: none
+            border-bottom: 1px solid $primary-low
+        th
+            border: none
+            border-bottom: 3px solid $primary-low
+            color: $primary
+            text-align: left
+            padding: 8px 15px
+    .table-striped>tbody>tr>td
+        background: none !important
+    thead, .heading
+        background: none
+    .heading, .box-heading
+        background: none
+        border-bottom: 3px solid $primary-low
+        text-align: left
+        text-transform: none
+        color: $primary
+        font-size: 1em
+    table, .box
+        background: none
+    .posts, .replies, .views
+        width: 65px
+        text-align: center !important
+    .badge
+        color: $primary
+        background: $primary-low
+    .well
+        background: none
+        border: none
+        box-shadow: none
+    label, .postbody, .postprofile strong
+        color: $primary !important
+    .postprofile
+        dt, dd
+            color: $primary-medium
+    .well blockquote
+        border: none
+        border-left: 5px solid $primary-medium
+        background: none
+    /* FOOTER */
+    .navbar-fixed-bottom
+        position: static
+        .navbar-inner
+            min-height: 30px
+            background: none
+            box-shadow: none
+            display: flex
+            justify-content: center
+        .linklist
+            height: 100%
+            margin: 0
+            display: flex
+            align-items: baseline
+        a, li:last-child
+            padding: 6px 12px !important
+            text-shadow: none
+            line-height: 1 !important
+            color: $primary !important
+        i
+            vertical-align: baseline
+        li
+            margin: 0 !important
+        a
+            transition: background 0.15s
+        a:hover
+            color: $quaternary !important
+            background: $quaternary-low !important
+            >i
+                filter: tint-filter($quaternary)
+        .divider-vertical
+            display: none !important
+    img[src="./cron.php?cron_type=tidy_search"]
+        display: none
     /* WIDGETS */
     .btn > .caret
         margin-top: 0
+    .inputbox, .input-medium
+        border: 1px solid $primary-medium
+        box-shadow: none !important
+        border-radius: 0
+        padding: 0.5em 0.65em !important
+        color: $primary !important
+        cursor: text
+        background: $secondary
+        transition: background 0.15s
+        &:hover
+            border: 1px solid $primary-medium
+        &:focus
+            outline: 3px solid $tertiary
+            outline-offset: -1px
+    select[multiple]
+        border-radius: 0
+        background: none
+        border: 1px solid $primary-medium
+        padding: 0
+        cursor: default
+        option
+            color: $primary
+            padding: 0.5em 0.65em
+            cursor: pointer
+            transition: background 0.15s
+            &:hover
+                background: $primary-low
+    hr
+        border: none !important
+        border-top: 3px solid $primary-low !important
