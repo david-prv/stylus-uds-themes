@@ -1,7 +1,7 @@
 /*==UserStyle==
 @name Themed CMS
 @version 1.0.0
-@description Adds themes to the CMS pages
+@description Variant of Colin Berndt's SIC Cms Theme
 @namespace github.com/ColinTimBarndt/cms-sic-saarland
 @author CoBa, david-prv
 @preprocessor stylus
@@ -682,6 +682,10 @@ else if owl-style-name == "rgb"
         color: $tertiary-or-white
     .close:hover
         color: $tertiary-or-white
+    input[type="text"], input[type="password"], textarea
+        background: transparent
+        color: white
+        border: 1px solid $tertiary
     hr
         border-top: 1px solid $primary-low
         border-bottom: 1px solid $primary-low
