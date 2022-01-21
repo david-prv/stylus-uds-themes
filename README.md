@@ -1,5 +1,6 @@
 [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-238b8b.svg)](https://raw.githubusercontent.com/ColinTimBarndt/stylus_cms-sic-saarland-theme/main/cms-sic-saarland.user.styl)
 
+### Variant of Colin Barndt's
 # CMS SIC Saarland Theme
 
 This style provides both a dark and an alternate light theme.
