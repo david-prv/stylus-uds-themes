@@ -393,6 +393,10 @@ else if owl-style-name == "rgb"
         background: $tertiary-low
     .alert
         shadow-under-text()
+        background-color: #503207
+        border: 1px solid #f89406
+    .alert h4
+        color: #f89406
     .message a[href],
     .alert a[href]
         text-decoration: underline
@@ -466,6 +470,14 @@ else if owl-style-name == "rgb"
         background: transparent
 @-moz-document regexp("https://cms.sic.saarland/[\\w-]+/(?!forum).*")
     /* NAV */
+    .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus
+        background-color: initial !important
+        border: 1px solid #0f82af !important
+    .nav-tabs
+        border-bottom: 1px solid #0f82af
+    .nav>li>a:hover, .nav>li>a:focus
+        background-color: inherit
+        border: 1px solid #0f82af
     .navbar, .user-login
         background: $secondary !important
         width: 100%
