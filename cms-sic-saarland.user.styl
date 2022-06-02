@@ -468,9 +468,13 @@ else if owl-style-name == "rgb"
         color: $primary
         border-color: $primary
         background: transparent
+    div.legend > div
+        background-color: transparent!important
+    .legendLabel
+        color: white
         
 @-moz-document domain("cms.cispa.saarland")
-    //HEADER 
+    /* HEADER */ 
     .site-logo
         display:none!important;
     .page-header
@@ -721,7 +725,7 @@ else if owl-style-name == "rgb"
             background: $primary-low
         .achieved
             background: $tertiary
-@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/termine/calendar/index")
+@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/termine/calendar/index"), regexp("https://cms.cispa.saarland/[\\w-]+/termine/calendar/index")
     .Calendar
         .fc-header tr
             border-bottom: none
