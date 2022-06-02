@@ -275,7 +275,7 @@ else if owl-style-name == "rgb"
     owl-style()
         transition: filter 0.25s !important
         animation: 4s linear infinite running rgb-owl
-@-moz-document domain("cms.sic.saarland")
+@-moz-document domain("cms.sic.saarland"), domain("cms.cispa.saarland")
     html
         color: $primary !important
         font-family: $font-family
@@ -468,7 +468,17 @@ else if owl-style-name == "rgb"
         color: $primary
         border-color: $primary
         background: transparent
-@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/(?!forum).*")
+        
+@-moz-document domain("cms.cispa.saarland")
+    //HEADER 
+    .site-logo
+        display:none!important;
+    .page-header
+        border-bottom: 1px solid #14aeea
+    .navbar-inverse .nav li.dropdown.open>.dropdown-toggle, .navbar-inverse .nav li.dropdown.active>.dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active>.dropdown-toggle
+        background-color: initial
+        box-shadow: none
+@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/(?!forum).*"), regexp("https://cms.cispa.saarland/[\\w-]+/(?!forum).*")
     /* NAV */
     .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus
         background-color: initial !important
