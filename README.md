@@ -1,4 +1,4 @@
-# CMS SIC Saarland Theme (Variation)
+# Stylus UdS Themes (Variation)
 
 This style provides both a dark and an alternate light theme.
 
