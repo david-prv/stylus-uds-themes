@@ -275,7 +275,7 @@ else if owl-style-name == "rgb"
     owl-style()
         transition: filter 0.25s !important
         animation: 4s linear infinite running rgb-owl
-@-moz-document domain("cms.sic.saarland"), domain("cms.cispa.saarland")
+@-moz-document domain("cms.sic.saarland"), domain("cms.cispa.saarland"), domain("mcms.cs.uni-saarland.de")
     html
         color: $primary !important
         font-family: $font-family
@@ -482,7 +482,7 @@ else if owl-style-name == "rgb"
     .navbar-inverse .nav li.dropdown.open>.dropdown-toggle, .navbar-inverse .nav li.dropdown.active>.dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active>.dropdown-toggle
         background-color: initial
         box-shadow: none
-@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/(?!forum).*"), regexp("https://cms.cispa.saarland/[\\w-]+/(?!forum).*")
+@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/(?!forum).*"), regexp("https://cms.cispa.saarland/[\\w-]+/(?!forum).*"), regexp("https://mcms.cs.uni-saarland.de/[\\w-]+/(?!forum).*")
     /* NAV */
     .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus
         background-color: initial !important
@@ -725,7 +725,7 @@ else if owl-style-name == "rgb"
             background: $primary-low
         .achieved
             background: $tertiary
-@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/termine/calendar/index"), regexp("https://cms.cispa.saarland/[\\w-]+/termine/calendar/index")
+@-moz-document regexp("https://cms.sic.saarland/[\\w-]+/termine/calendar/index"), regexp("https://cms.cispa.saarland/[\\w-]+/termine/calendar/index"), regexp("https://mcms.cs.uni-saarland.de/[\\w-]+/termine/calendar/index")
     .Calendar
         .fc-header tr
             border-bottom: none
