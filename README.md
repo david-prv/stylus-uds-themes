@@ -9,7 +9,7 @@ If the installation button above does not work, download the stylus file and ope
 You need to have the Stylus Addon installed. [(Firefox)] [(Chrome)]  
 Next, press the button below for one-click-installation:  
 
-[![Install Original Style (click)](https://img.shields.io/badge/Install%20directly%20with-Stylus-238b8b.svg)](https://github.com/david-prv/stylus_cms-sic-saarland-theme/blob/main/cms-sic-saarland.user.styl)
+[![Install Original Style (click)](https://img.shields.io/badge/Install%20directly%20with-Stylus-238b8b.svg)](https://github.com/david-prv/stylus-uds-themes/raw/main/cms-sic-saarland.user.styl)
 
 [(Firefox)]: https://addons.mozilla.org/en-US/firefox/addon/styl-us/
 [(Chrome)]: https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne
